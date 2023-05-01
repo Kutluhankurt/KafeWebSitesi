@@ -31,6 +31,7 @@ const Profile = () => {
             <i className="fa fa-cutlery"></i>
             <button className="ml-1 ">Products</button>
           </li>
+          
           <li
             className={`border w-full p-3 cursor-pointer hover:bg-primary hover:text-white transition-all ${
               tabs === 2 && "bg-primary text-white"
