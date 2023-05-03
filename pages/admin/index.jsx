@@ -18,7 +18,6 @@ const Login = () => {
       onSubmit,
       validationSchema: adminSchema,
     });
-    
 
   const inputs = [
     {
