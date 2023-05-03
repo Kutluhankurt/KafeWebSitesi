@@ -4,6 +4,7 @@ import { useState } from "react";
 import Account from "../../components/profile/Account";
 import Order from "../../components/profile/Order";
 import Password from "../../components/profile/Password";
+import Products from "@/components/admin/Products";
 
 const Profile = () => {
   const [tabs, setTabs] = useState(0);
@@ -29,7 +30,7 @@ const Profile = () => {
             onClick={() => setTabs(0)}
           >
             <i className="fa fa-cutlery"></i>
-            <button className="ml-1 ">Products</button>
+            <button className="ml-1 ">Ürünler</button>
           </li>
           
           <li
@@ -39,7 +40,7 @@ const Profile = () => {
             onClick={() => setTabs(2)}
           >
             <i className="fa fa-motorcycle"></i>
-            <button className="ml-1">Orders</button>
+            <button className="ml-1">Siparişler</button>
           </li>
           <li
             className={`border w-full p-3 cursor-pointer hover:bg-primary hover:text-white transition-all ${
@@ -48,7 +49,7 @@ const Profile = () => {
             onClick={() => setTabs(1)}
           >
             <i className="fa fa-key"></i>
-            <button className="ml-1">Categories</button>
+            <button className="ml-1">Kategoriler</button>
           </li>
           <li
             className={`border w-full p-3 cursor-pointer hover:bg-primary hover:text-white transition-all ${
@@ -70,7 +71,7 @@ const Profile = () => {
           </li>
         </ul>
       </div>
-      {tabs === 0 && <Account />}
+      {tabs === 0 && <Products />}
       {tabs === 1 && <Password />}
       {tabs === 2 && <Order />}
     </div>
