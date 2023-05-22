@@ -3,7 +3,7 @@ import Title from "../ui/Title";
 const Order = () => {
   return (
     <div className="lg:p-8 flex-1 lg:mt-0 mt-5">
-      <Title addClass="text-[40px]">Products</Title>
+      <Title addClass="text-[40px]">Siparişler</Title>
       <div className="overflow-x-auto w-full mt-5">
         <table className="w-full text-sm text-center text-gray-500 min-w-[1000px]">
           <thead className="text-xs text-gray-400 uppercase bg-gray-700">
@@ -18,13 +18,13 @@ const Order = () => {
                 TOPLAM
               </th>
               <th scope="col" className="py-3 px-6">
-                PAYMENT
+                ÖDEME TÜRÜ
               </th>
               <th scope="col" className="py-3 px-6">
-                STATUS
+                DURUM
               </th>
               <th scope="col" className="py-3 px-6">
-                ACTION
+                -
               </th>
             </tr>
           </thead>
@@ -34,20 +34,20 @@ const Order = () => {
                 63107...
               </td>
               <td className="py-4 px-6 font-medium whitespace-nowrap hover:text-white">
-                kUTLUHAN KURT
+                KUTLUHAN KURT
               </td>
               <td className="py-4 px-6 font-medium whitespace-nowrap hover:text-white">
-                12
+                12₺
               </td>
 
               <td className="py-4 px-6 font-medium whitespace-nowrap hover:text-white">
-                Cash
+                Nakit
               </td>
               <td className="py-4 px-6 font-medium whitespace-nowrap hover:text-white">
-                preparing
+                hazırlanıyor
               </td>
               <td className="py-4 px-6 font-medium whitespace-nowrap hover:text-white">
-                <button className="btn-primary !bg-success">Next Stage</button>
+                <button className="btn-primary !bg-success">Sonraki Aşama</button>
               </td>
             </tr>
           </tbody>
