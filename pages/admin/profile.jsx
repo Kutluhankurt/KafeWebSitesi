@@ -1,15 +1,37 @@
+import axios from "axios";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 import { useState } from "react";
 import Order from "../../components/admin/Order";
 import Products from "../../components/admin/Products";
 import Category from "@/components/admin/Category";
 import Footer from "../../components/admin/Footer";
+import { toast } from "react-toastify";
+import AddProduct from "../../components/admin/AddProduct";
 
 
 
 const Profile = () => {
   const [tabs, setTabs] = useState(0);
+  const [isProductModal, setIsProductModal] = useState(false);
+
+  const { push } = useRouter();
+
+  const closeAdminAccount = async () => {
+    try {
+      if (confirm("Admin hesabını kapatmak istediğinize emin misiniz?")) {
+        const res = await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/admin`);
+        if (res.status === 200) {
+          push("/admin");
+          toast.success("Admin Hesabı Kapandı!");
+        }
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
 
   return (
     <div className="flex px-10 min-h-[calc(100vh_-_433px)] lg:flex-row flex-col lg:mb-0 mb-10">
@@ -66,10 +88,10 @@ const Profile = () => {
             className={`border w-full p-3 cursor-pointer hover:bg-primary hover:text-white transition-all ${
               tabs === 4 && "bg-primary text-white"
             }`}
-            onClick={() => setTabs(4)}
+            onClick={closeAdminAccount}
           >
             <i className="fa fa-sign-out"></i>
-            <button className="ml-1">Exit</button>
+            <button className="ml-1">Çıkış</button>
           </li>
         </ul>
       </div>
@@ -77,8 +99,31 @@ const Profile = () => {
       {tabs === 1 && <Order />}
       {tabs === 2 && <Category />}
       {tabs === 3 && <Footer />}
+      {isProductModal && <AddProduct setIsProductModal={setIsProductModal} />}
+      <button
+        className="btn-primary !w-12 !h-12 !p-0 absolute bottom-14 right-10 text-4xl"
+        onClick={() => setIsProductModal(true)}
+      >
+        +
+      </button>
     </div>
   );
+};
+
+export const getServerSideProps = (ctx) => {
+  const myCookie = ctx.req?.cookies || "";
+  if (myCookie.token !== process.env.ADMIN_TOKEN) {
+    return {
+      redirect: {
+        destination: "/admin",
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {},
+  };
 };
 
 export default Profile;

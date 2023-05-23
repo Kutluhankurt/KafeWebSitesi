@@ -3,10 +3,26 @@ import Link from "next/link";
 import Input from "../../components/Input";
 import Title from "../../components/ui/Title";
 import { registerSchema } from "../../schema/register";
+import axios from "axios";
+import { toast } from "react-toastify";
+import { useRouter } from "next/router";
 
 const Register = () => {
+  const { push } = useRouter();
   const onSubmit = async (values, actions) => {
-    await new Promise((resolve) => setTimeout(resolve, 4000));
+    try {
+      const res = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/users/register`,
+        values
+      );
+      if (res.status === 200) {
+        toast.success("Kayıt Başarılı.");
+        push("/auth/login");
+      }
+    } catch (err) {
+      toast.error(err.response.data.message);
+      console.log(err);
+    }
     actions.resetForm();
   };
   const { values, errors, touched, handleSubmit, handleChange, handleBlur } =
@@ -78,7 +94,9 @@ const Register = () => {
           ))}
         </div>
         <div className="flex flex-col w-full gap-y-3 mt-6">
-          <button className="btn-primary">KAYIT OL</button>
+        <button className="btn-primary" type="submit">
+            KAYIT OL
+          </button>
           <Link href="/auth/login">
             <span className="text-sm underline cursor-pointer text-secondary">
               Zaten bir hesabınız var mı? Giriş yapın.

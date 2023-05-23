@@ -7,11 +7,11 @@ import React from "react";
 
 import Customers from "@/components/customers/Customers";
 
-const Index = () => {
+const Index = ({ categoryList }) => {
   return <div>
     <Carousel />
     <Campaigns />
-    <MenuWrapper />
+    <MenuWrapper categoryList={categoryList} />
     <About />
     <Reservation />
     <Customers />
