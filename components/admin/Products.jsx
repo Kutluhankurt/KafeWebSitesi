@@ -38,7 +38,7 @@ const Products = () => {
             Pizza
           </td>
           <td className="py-4 px-6 font-medium whitespace-nowrap hover:text-white">
-            10
+            10₺
           </td>
           <td className="py-4 px-6 font-medium whitespace-nowrap hover:text-white">
             <button className="btn-primary !bg-danger">Kaldır</button>
