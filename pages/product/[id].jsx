@@ -56,11 +56,11 @@ const Index = ({ food }) => {
       <div className="md:flex-1 md:text-start text-center">
         <Title addClass="text-6xl">{food?.title}</Title>
         <span className="text-primary text-2xl font-bold underline underline-offset-1 my-4 inline-block">
-          ${price}
+        {price}₺
         </span>
         <p className="text-sm my-4 md:pr-24">{food?.desc}</p>
         <div>
-          <h4 className="text-xl font-bold">Choose the size</h4>
+          <h4 className="text-xl font-bold">Boyut Seçiniz</h4>
           {food.category === "pizza" && (
             <div className="flex items-center gap-x-20 md:justify-start justify-center">
               <div
