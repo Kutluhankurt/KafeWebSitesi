@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { RiShoppingCart2Fill } from "react-icons/ri";
 import { useSelector, useDispatch } from "react-redux";
-import { addProduct } from "../../redux/cartSlice";
+import { addProduct } from "../../redux/cardSlice";
 
 const MenuItem = ({ product }) => {
   const cart = useSelector((state) => state.cart);
