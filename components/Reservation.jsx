@@ -94,7 +94,7 @@ function Reservation() {
                 </form>
                 <div className="lg:flex-1 w-full">
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3014.2130544660263!2d29.210754575834024!3d40.93299757136124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cac5213fae3b87%3A0x7df1b1a07a423ce5!2sGlob%20Coffee!5e0!3m2!1str!2str!4v1681928927464!5m2!1str!2str"
-                        width="600" height="450" allowFullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        width="450" height="450" allowFullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </div>
