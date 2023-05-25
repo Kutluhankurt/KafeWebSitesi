@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Title from "../../components/ui/Title";
 import { useSelector, useDispatch } from "react-redux";
-import { reset } from "../../redux/cartSlice";
+import { reset } from "../../redux/cardSlice";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import { toast } from "react-toastify";
