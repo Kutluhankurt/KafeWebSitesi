@@ -1,4 +1,4 @@
-import Product from "../../../models/Product";
+import Footer from "../../../models/Footer";
 import dbConnect from "../../../util/dbConnect";
 
 const handler = async (req, res) => {
@@ -7,8 +7,8 @@ const handler = async (req, res) => {
 
   if (method === "GET") {
     try {
-      const products = await Product.find();
-      res.status(200).json(products);
+      const footer = await Footer.find();
+      res.status(200).json(footer);
     } catch (err) {
       console.log(err);
     }
@@ -16,8 +16,8 @@ const handler = async (req, res) => {
 
   if (method === "POST") {
     try {
-      const newProduct = await Product.create(req.body);
-      res.status(201).json(newProduct);
+      const newFooter = await Footer.create(req.body);
+      res.status(201).json(newFooter);
     } catch (err) {
       console.log(err);
     }

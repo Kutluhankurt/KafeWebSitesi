@@ -18,29 +18,48 @@ const Header = () => {
   
     return (
         <div
-        className={`h-[5.5rem] z-50 relative ${
-          router.asPath === "/" ? "bg-transparent" : "bg-secondary"
+        className={`h-[5.5rem] z-50 relative w-full ${
+          router.asPath === "/" ? "bg-transparent" : "bg-secondary !fixed"
         }`}
       >
       <div className="container mx-auto text-white flex justify-between items-center h-full">
         <Logo />
         <nav
-            className={`sm:static absolute top-0 left-0 sm:w-auto sm:h-auto w-full h-screen sm:text-white text-black sm:bg-transparent bg-white sm:flex hidden  ${
-            isMenuModal === true && "!grid place-content-center"
+        className={`sm:static absolute top-0 left-0 sm:w-auto sm:h-auto w-full h-screen sm:text-white text-black sm:bg-transparent bg-white sm:flex hidden z-50  ${            isMenuModal === true && "!grid place-content-center"
           }`}
         >
           <ul className="flex gap-x-2 sm:flex-row flex-col items-center">
-            <li className="px-[20px] py-[10px] uppercase hover:text-primary cursor-pointer">
-            <Link href="/">Ana Sayfa</Link>
+          <li
+              className={`px-[5px] py-[10px] uppercase hover:text-primary cursor-pointer ${
+                router.asPath === "/" && "text-primary"
+              }`}
+              onClick={() => setIsMenuModal(false)}
+            >          
+              <Link href="/">Ana Sayfa</Link>
             </li>
-            <li className="px-[20px] py-[10px] uppercase hover:text-primary cursor-pointer">
+            <li
+              className={`px-[5px] py-[10px] uppercase hover:text-primary cursor-pointer ${
+                router.asPath === "/menu" && "text-primary"
+              }`}
+              onClick={() => setIsMenuModal(false)}
+            >            
             <Link href="/menu">Menü</Link>
             </li>
-            <li className="px-[20px] py-[10px] uppercase hover:text-primary cursor-pointer">
-            <Link href="/about">Hakkımızda</Link>
+            <li
+              className={`px-[5px] py-[10px] uppercase hover:text-primary cursor-pointer ${
+                router.asPath === "/about" && "text-primary"
+              }`}
+              onClick={() => setIsMenuModal(false)}
+            >          
+              <Link href="/about">Hakkımızda</Link>
             </li>
-            <li className="px-[20px] py-[10px] uppercase hover:text-primary cursor-pointer">
-              <Link href="/reservation">Rezervasyon</Link>
+            <li
+              className={`px-[5px] py-[10px] uppercase hover:text-primary cursor-pointer ${
+                router.asPath === "/reservation" && "text-primary"
+              }`}
+              onClick={() => setIsMenuModal(false)}
+            >  
+                        <Link href="/reservation">Rezervasyon</Link>
             </li>
           </ul>
           {isMenuModal && (
@@ -55,20 +74,33 @@ const Header = () => {
         <div className="flex gap-x-4 items-center">
           <Link href="/auth/login">
           <span>
-              <FaUserAlt className="hover:text-primary transition-all cursor-pointer" />
-            </span>
+          <FaUserAlt
+                className={`hover:text-primary transition-all cursor-pointer ${
+                  (router.asPath.includes("profile") ||
+                    router.asPath.includes("auth")) &&
+                  "text-primary"
+                }`}
+                size={18}
+              />            </span>
           </Link>
           <Link href="/cart">
           <span className="relative">
-              <FaShoppingCart className="hover:text-primary transition-all cursor-pointer" />
-              <span className="w-4 h-4 text-xs grid place-content-center rounded-full bg-primary absolute -top-2 -right-3 text-black font-bold">
+          <FaShoppingCart
+                className={`hover:text-primary transition-all cursor-pointer ${
+                  router.asPath === "/cart" && "text-primary"
+                }`}
+                size={18}
+              />        
+                    <span className="px-[5px] text-[10px]   rounded-full bg-primary absolute -top-2 -right-3 text-black inline-flex items-center justify-center font-bold">
                 {cart.products.length === 0 ? "0" : cart.products.length}
               </span>
             </span>
           </Link>
           <button onClick={() => setIsSearchModal(true)}>
-            <FaSearch className="hover:text-primary transition-all cursor-pointer" />
-          </button>
+          <FaSearch
+              className="hover:text-primary transition-all cursor-pointer"
+              size={18}
+            />          </button>
           <a href="#" className="md:inline-block hidden sm">
             <button className="btn-primary">Sipariş Ver</button>
           </a>
