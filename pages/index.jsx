@@ -1,6 +1,6 @@
 import axios from "axios";
 import Head from "next/head";
-import Home from "./home/index";
+import Home from "pages/home/index";
 import Input from "@/components/Input";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
