@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import Title from "../../components/ui/Title";
-import { addProduct } from "../../redux/cardSlice";
+import { addProduct } from "../../redux/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 
@@ -12,6 +12,8 @@ const Index = ({ food }) => {
   const [extraItems, setExtraItems] = useState(food?.extraOptions);
   const [extras, setExtras] = useState([]);
   const cart = useSelector((state) => state.cart);
+  const findCart = cart.products.find((item) => item._id === food._id);
+
 
   const dispatch = useDispatch();
 
@@ -102,8 +104,11 @@ const Index = ({ food }) => {
             </label>
           ))}
         </div>
-        <button className="btn-primary" onClick={handleClick}>
-          Sepete Ekle
+        <button
+          className="btn-primary"
+          onClick={handleClick}
+          disabled={findCart}
+        >          Sepete Ekle
         </button>
       </div>
     </div>
